@@ -170,17 +170,17 @@ map <LEADER>fs :w !sudo tee %<CR>
 " " 
 " " NerdTree-git
 " let g:NERDTreeGitStatusIndicatorMapCustom = {
-              " \ 'Modified'  :'✹',
-              " \ 'Staged'    :'✚',
-              " \ 'Untracked' :'✭',
-              " \ 'Renamed'   :'➜',
-              " \ 'Unmerged'  :'═',
-              " \ 'Deleted'   :'✖',
-              " \ 'Dirty'     :'✗',
-              " \ 'Ignored'   :'☒',
-              " \ 'Clean'     :'✔︎',
-              " \ 'Unknown'   :'?',
-              " \ }
+"               \ 'Modified'  :'✹',
+"               \ 'Staged'    :'✚',
+"               \ 'Untracked' :'✭',
+"               \ 'Renamed'   :'➜',
+"               \ 'Unmerged'  :'═',
+"               \ 'Deleted'   :'✖',
+"               \ 'Dirty'     :'✗',
+"               \ 'Ignored'   :'☒',
+"               \ 'Clean'     :'✔︎',
+"               \ 'Unknown'   :'?',
+"               \ }
 " 
 " " let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " let g:airline_theme = 'tender'
