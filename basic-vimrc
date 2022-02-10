@@ -153,9 +153,15 @@ noremap S :w<CR>
 
 " Open new tabs
 " Note that, tabs are a collection of windows, it is a layout
+<<<<<<< HEAD
 noremap nn :tabe<CR>
 noremap _ :-tabnext<CR>
 noremap + :+tabnext<CR> 
+=======
+map tn :tabe<CR>
+map _ :-tabnext<CR>
+map + :+tabnext<CR> 
+>>>>>>> 5fa0fa4408b957be0d8aefda3f95163fb152628f
 
 " Shift between buffers
 noremap = :bn<CR>
