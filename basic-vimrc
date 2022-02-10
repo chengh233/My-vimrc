@@ -153,25 +153,25 @@ noremap S :w<CR>
 
 " Open new tabs
 " Note that, tabs are a collection of windows, it is a layout
-map nn :tabe<CR>
-map _ :-tabnext<CR>
-map + :+tabnext<CR> 
+noremap nn :tabe<CR>
+noremap _ :-tabnext<CR>
+noremap + :+tabnext<CR> 
 
 " Shift between buffers
-map = :bn<CR>
-map - :bp<CR>
+noremap = :bn<CR>
+noremap - :bp<CR>
 
 " Close buffer and move to the previous one
-nmap <leader>bq :bp <BAR> bd #<CR>
+noremap <leader>bq :bp <BAR> bd #<CR>
 
 " Force save file as sudo (Save life)
-map <LEADER>fs :w !sudo tee %<CR>
+noremap <LEADER>fs :w !sudo tee %<CR>
 
 " Split setting
-map <LEADER>l :set splitright<CR>:vsplit<CR>
-map <LEADER>h :set nosplitright<CR>:vsplit<CR>
-map <LEADER>k :set nosplitbelow<CR>:split<CR>
-map <LEADER>j :set splitbelow<CR>:split<CR>
+noremap <LEADER>l :set splitright<CR>:vsplit<CR>
+noremap <LEADER>h :set nosplitright<CR>:vsplit<CR>
+noremap <LEADER>k :set nosplitbelow<CR>:split<CR>
+noremap <LEADER>j :set splitbelow<CR>:split<CR>
 
 " Open new terminal in vim
 noremap <LEADER>t :set splitbelow<CR>:term<CR>
