@@ -103,6 +103,10 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'joshdick/onedark.vim'
 
+  Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+
+  Plug 'mzlogin/vim-markdown-toc'
+
 call plug#end()
 
 " }}}
@@ -120,7 +124,7 @@ nnoremap <leader><CR> :nohlsearch<CR>
 inoremap kk <Esc>
 
 " Press the ; to type :
-nnoremap ; :
+noremap ; :
 
 " Pressing the letter o will open a new line below the current one.
 " Exit insert mode after creating a new line above or below the current line.
@@ -190,6 +194,14 @@ noremap <LEADER>j :set splitbelow<CR>:split<CR>
 
 " Open new terminal in vim
 noremap <LEADER>t :set splitbelow<CR>:term<CR>
+tmap <LEADER>t <c-w>N<CR>
+
+" Move to the head and end of line
+noremap : ^
+noremap " $
+
+" set spell check
+noremap <LEADER>sc :set spell!<CR>"
 
 " }}}
 
@@ -291,6 +303,21 @@ endif
 
 " Make index come back to the location where you last exit
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Settings for vim preview
+"Uncomment to override defaults:
+"let g:instant_markdown_slow = 1
+"let g:instant_markdown_autostart = 0
+"let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+"let g:instant_markdown_allow_external_content = 0
+let g:instant_markdown_mathjax = 1
+"let g:instant_markdown_mermaid = 1
+"let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+"let g:instant_markdown_autoscroll = 0
+let g:instant_markdown_port = 8888
+"let g:instant_markdown_python = 1
+
 " }}}
 
 
