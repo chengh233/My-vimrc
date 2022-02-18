@@ -10,7 +10,7 @@
 " Adviced by: TheCW @bilibili.com (https://github.com/theniceboy)
 " Date: Tue Feb  8 15:50:48 PST 2022
 " RGB for wsl2 on Windows: 39.72.98
-" Version: Basic
+" Version: PlugIn
 
 " Turn syntax highlighting on, make your code easier to read.
 syntax on
@@ -194,7 +194,7 @@ noremap <LEADER>j :set splitbelow<CR>:split<CR>
 
 " Open new terminal in vim
 noremap <LEADER>t :set splitbelow<CR>:term<CR>
-tmap <LEADER>t <c-w>N<CR>
+tmap <c-k> <c-w>N<CR>
 
 " Move to the head and end of line
 noremap : ^

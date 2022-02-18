@@ -90,6 +90,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " PLUGINS ---------------------------------------------------------------- {{{
 
+
 " }}}
 
 
@@ -105,7 +106,7 @@ nnoremap <leader><CR> :nohlsearch<CR>
 inoremap kk <Esc>
 
 " Press the ; to type :
-nnoremap ; :
+noremap ; :
 
 " Pressing the letter o will open a new line below the current one.
 " Exit insert mode after creating a new line above or below the current line.
@@ -135,10 +136,10 @@ noremap <c-d> <c-w><
 
 " NERDTree specific mappings.
 " Map the F3 key to toggle NERDTree open and close.
-" nnoremap ff :NERDTreeToggle<cr>
+nnoremap ff :NERDTreeToggle<cr>
 
 " Have nerdtree ignore certain files and directories.
-" let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
+let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
 
 " Quick rolling
 noremap J 5j
@@ -175,6 +176,14 @@ noremap <LEADER>j :set splitbelow<CR>:split<CR>
 
 " Open new terminal in vim
 noremap <LEADER>t :set splitbelow<CR>:term<CR>
+tmap <c-k> <c-w>N<CR>
+
+" Move to the head and end of line
+noremap : ^
+noremap " $
+
+" set spell check
+noremap <LEADER>sc :set spell!<CR>"
 
 " }}}
 
@@ -207,45 +216,10 @@ augroup cursor_off
     autocmd WinEnter * set cursorline cursorcolumn
 augroup END
 
-" If GUI version of Vim is running set these options.
-if has('gui_running')
-    " Set the background tone.
-
-    " Set the color scheme.
-
-    " Set a custom font you have installed on your computer.
-    " Syntax: set guifont=<font_name>\ <font_weight>\ <size>
-    set guifont=Monospace\ Regular\ 12
-
-    " Display more of the file by default.
-    " Hide the toolbar.
-    set guioptions-=T
-
-    " Hide the the left-side scroll bar.
-    set guioptions-=L
-
-    " Hide the the right-side scroll bar.
-    set guioptions-=r
-
-    " Hide the the menu bar.
-    set guioptions-=m
-
-    " Hide the the bottom scroll bar.
-    set guioptions-=b
-
-    " Map the F4 key to toggle the menu, toolbar, and scroll bar.
-    " <Bar> is the pipe character.
-    " <CR> is the enter key.
-    nnoremap <F4> :if &guioptions=~#'mTr'<Bar>
-        \set guioptions-=mTr<Bar>
-        \else<Bar>
-        \set guioptions+=mTr<Bar>
-        \endif<CR>
-
-endif
-
 " Make index come back to the location where you last exit
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
 " }}}
 
 
