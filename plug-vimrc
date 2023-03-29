@@ -112,6 +112,10 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'mzlogin/vim-markdown-toc'
 
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+  Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
 " }}}
@@ -207,6 +211,10 @@ noremap " $
 
 " set spell check
 noremap <LEADER>sc :set spell!<CR>"
+
+
+" open Rg and fzf
+noremap <LEADER>f :Rg<CR>
 
 " }}}
 
@@ -322,6 +330,16 @@ let g:instant_markdown_mathjax = 1
 "let g:instant_markdown_autoscroll = 0
 let g:instant_markdown_port = 8888
 "let g:instant_markdown_python = 1
+"
+"
+
+let g:ackprg = 'ag --vimgrep'
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%'), <bang>0)
+
 
 " }}}
 
