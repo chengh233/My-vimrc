@@ -1,0 +1,365 @@
+"
+"  __  __        __     _____ __  __ ____   ____
+" |  \/  |_   _  \ \   / /_ _|  \/  |  _ \ / ___|
+" | |\/| | | | |  \ \ / / | || |\/| | |_) | |
+" | |  | | |_| |   \ V /  | || |  | |  _ <| |___
+" |_|  |_|\__, |    \_/  |___|_|  |_|_| \_\\____|
+"         |___/
+"
+" Author: Cheng Huang
+" Adviced by: TheCW @bilibili.com (https://urldefense.com/v3/__https://github.com/theniceboy__;!!Mih3wA!HlqiYvy6LCXgBlpOOXThwa3HyI66ZH3IxHOqoX9Wp1SPAFRzs62MEspWMSCHn5Ee0FHt31r7LZWnMpwNAA$ )
+" Date: Tue Feb  8 15:50:48 PST 2022
+" RGB for wsl2 on Windows: 39.72.98
+" Version: Plugin
+"
+"
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"   https://urldefense.com/v3/__https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim__;!!Mih3wA!HlqiYvy6LCXgBlpOOXThwa3HyI66ZH3IxHOqoX9Wp1SPAFRzs62MEspWMSCHn5Ee0FHt31r7LZWSy9f3xw$
+"
+
+" Turn syntax highlighting on, make your code easier to read.
+syntax on
+
+" Disable compatibility with vi which can cause unexpected issues.
+set nocompatible
+
+set hidden
+set encoding=utf-8
+" Enable type file detection. Vim will be able to try to detect the type of file in use.
+filetype on
+
+" Load an indent file for the detected file type.
+filetype indent on
+
+" Enable plugins and load plugin for the detected file type.
+filetype plugin on
+
+" Add numbers to each line on the left-hand side.
+set number
+
+" Highlight cursor line underneath the cursor horizontally.
+set cursorline
+
+" Highlight cursor line underneath the cursor vertically.
+set cursorcolumn
+
+" Set shift width to 4 spaces.
+set shiftwidth=4
+
+" Set tab width to 4 columns.
+set tabstop=4
+
+" Use space characters instead of tabs.
+set expandtab
+
+" Do not let cursor scroll below or above N number of lines when scrolling.
+set scrolloff=10
+
+" Do not wrap lines. Allow long lines to extend as far as the line goes.
+set nowrap
+
+" While searching though a file incrementally highlight matching characters as you type.
+set incsearch
+
+" Ignore capital letters during search.
+set ignorecase
+
+" Override the ignorecase option if searching for capital letters.
+" This will allow you to search specifically for capital letters.
+set smartcase
+
+" Show partial command you type in the last line of the screen.
+set showcmd
+
+" Show the mode you are on the last line.
+set showmode
+
+" Show matching words during a search.
+set showmatch
+
+" Use highlighting when doing a search.
+set hlsearch
+
+" Set the commands to save in history default number is 20.
+set history=1000
+
+" Enable auto completion menu after pressing TAB.
+set wildmenu
+
+" Make wildmenu behave like similar to Bash completion.
+set wildmode=list:longest
+
+" There are certain files that we would never want to edit with Vim.
+" Wildmenu will ignore files with these extensions.
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+" PLUGINS ---------------------------------------------------------------- {{{
+
+call plug#begin('~/.vim/plugged')
+
+
+  Plug 'dense-analysis/ale'
+
+  Plug 'preservim/nerdtree'
+
+  Plug 'vim-airline/vim-airline'
+
+  Plug 'vim-airline/vim-airline-themes'
+
+  Plug 'joshdick/onedark.vim'
+
+"  Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+
+"  Plug 'mzlogin/vim-markdown-toc'
+"
+
+  Plug 'chrisbra/vim-diff-enhanced'
+
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+  Plug 'junegunn/fzf.vim'
+
+call plug#end()
+
+" }}}
+
+
+" MAPPINGS --------------------------------------------------------------- {{{
+
+" Set the backslash as the leader key.
+let mapleader = " "
+
+" Press \\ to jump back to the last cursor position.
+nnoremap <leader><CR> :nohlsearch<CR>
+
+" Type jj to exit insert mode quickly.
+inoremap kk <Esc>
+
+" Press the ; to type :
+noremap ; :
+
+" Pressing the letter o will open a new line below the current one.
+" Exit insert mode after creating a new line above or below the current line.
+nnoremap o o<esc>
+nnoremap O O<esc>
+
+" Center the cursor vertically when moving to the next word during a search.
+nnoremap n nzz
+nnoremap N Nzz
+
+" Yank from cursor to the end of line.
+nnoremap Y y$
+
+" You can split the window in Vim by typing :split or :vsplit.
+" Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+" Resize split windows using arrow keys by pressing:
+" CTRL+UP, CTRL+DOWN, CTRL+LEFT, or CTRL+RIGHT.
+noremap <c-w> <c-w>+
+noremap <c-s> <c-w>-
+noremap <c-a> <c-w>>
+noremap <c-d> <c-w><
+
+" NERDTree specific mappings.
+" Map the F3 key to toggle NERDTree open and close.
+nnoremap ff :NERDTreeToggle<cr>
+
+" Have nerdtree ignore certain files and directories.
+let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
+
+" Quick rolling
+noremap J 5j
+noremap K 5k
+noremap H b
+noremap L w
+
+" Quick save and quit
+noremap R :source $MYVIMRC<CR>
+noremap Q :q<CR>
+noremap S :w<CR>
+
+" Open new tabs
+" Note that, tabs are a collection of windows, it is a layout
+noremap tn :tabe<CR>
+noremap _ :-tabnext<CR>
+noremap + :+tabnext<CR>
+
+" Shift between buffers
+noremap = :bn<CR>
+noremap - :bp<CR>
+
+" Close buffer and move to the previous one
+noremap <leader>q :bp <BAR> bd #<CR>
+
+" Force save file as sudo (Save life)
+noremap <LEADER>fs :w !sudo tee %<CR>
+
+" Split setting
+noremap <LEADER>l :set splitright<CR>:vsplit<CR>
+noremap <LEADER>h :set nosplitright<CR>:vsplit<CR>
+noremap <LEADER>k :set nosplitbelow<CR>:split<CR>
+noremap <LEADER>j :set splitbelow<CR>:split<CR>
+
+" Open new terminal in vim
+noremap <LEADER>t :set splitbelow<CR>:term<CR>
+tmap <c-k> <c-w>N<CR>
+
+" Move to the head and end of line
+noremap : ^
+noremap " $
+
+" set spell check
+noremap <LEADER>sc :set spell!<CR>"
+
+" open Rg and fzf
+noremap <LEADER>f :Rg<CR>
+noremap <LEADER>F :Rg<CR>
+
+" }}}
+
+
+" VIMSCRIPT -------------------------------------------------------------- {{{
+
+" This will enable code folding.
+" Use the marker method of folding.
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" If the current file type is HTML, set indentation to 2 spaces.
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+
+" If Vim version is equal to or greater than 7.3 enable undofile.
+" This allows you to undo changes to a file even after saving it.
+if version >= 703
+    set undodir=~/.vim/backup
+    set undofile
+    set undoreload=10000
+endif
+
+" You can split a window into sections by typing `:split` or `:vsplit`.
+" Display cursorline and cursorcolumn ONLY in active window.
+augroup cursor_off
+    autocmd!
+    autocmd WinLeave * set nocursorline nocursorcolumn
+    autocmd WinEnter * set cursorline cursorcolumn
+augroup END
+
+" If GUI version of Vim is running set these options.
+if has('gui_running')
+    " Set the background tone.
+
+    " Set the color scheme.
+
+    " Set a custom font you have installed on your computer.
+    " Syntax: set guifont=<font_name>\ <font_weight>\ <size>
+    set guifont=Monospace\ Regular\ 12
+
+    " Display more of the file by default.
+    " Hide the toolbar.
+    set guioptions-=T
+
+    " Hide the the left-side scroll bar.
+    set guioptions-=L
+
+    " Hide the the right-side scroll bar.
+    set guioptions-=r
+
+    " Hide the the menu bar.
+    set guioptions-=m
+
+    " Hide the the bottom scroll bar.
+    set guioptions-=b
+
+    " Map the F4 key to toggle the menu, toolbar, and scroll bar.
+    " <Bar> is the pipe character.
+    " <CR> is the enter key.
+    nnoremap <F4> :if &guioptions=~#'mTr'<Bar>
+        \set guioptions-=mTr<Bar>
+        \else<Bar>
+        \set guioptions+=mTr<Bar>
+        \endif<CR>
+
+endif
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_theme='onedark'
+
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+colorscheme onedark
+highlight Normal ctermbg=None
+highlight LineNr ctermfg=DarkGrey
+
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < https://urldefense.com/v3/__http://sunaku.github.io/tmux-24bit-color.html*usage__;Iw!!Mih3wA!HlqiYvy6LCXgBlpOOXThwa3HyI66ZH3IxHOqoX9Wp1SPAFRzs62MEspWMSCHn5Ee0FHt31r7LZU5DjkGdw$  > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://urldefense.com/v3/__https://github.com/neovim/neovim/pull/2198__;!!Mih3wA!HlqiYvy6LCXgBlpOOXThwa3HyI66ZH3IxHOqoX9Wp1SPAFRzs62MEspWMSCHn5Ee0FHt31r7LZUGI2hLtg$  >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://urldefense.com/v3/__https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162__;!!Mih3wA!HlqiYvy6LCXgBlpOOXThwa3HyI66ZH3IxHOqoX9Wp1SPAFRzs62MEspWMSCHn5Ee0FHt31r7LZXZceEz3Q$  >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://urldefense.com/v3/__https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd__;!!Mih3wA!HlqiYvy6LCXgBlpOOXThwa3HyI66ZH3IxHOqoX9Wp1SPAFRzs62MEspWMSCHn5Ee0FHt31r7LZW7Qkf9VQ$  >
+  " < https://urldefense.com/v3/__https://github.com/neovim/neovim/wiki/Following-HEAD*20160511__;Iw!!Mih3wA!HlqiYvy6LCXgBlpOOXThwa3HyI66ZH3IxHOqoX9Wp1SPAFRzs62MEspWMSCHn5Ee0FHt31r7LZWLOfr5vw$  >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+" Make index come back to the location where you last exit
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Settings for vim preview
+"Uncomment to override defaults:
+"let g:instant_markdown_slow = 1
+"let g:instant_markdown_autostart = 0
+"let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+"let g:instant_markdown_allow_external_content = 0
+let g:instant_markdown_mathjax = 1
+"let g:instant_markdown_mermaid = 1
+"let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+"let g:instant_markdown_autoscroll = 0
+let g:instant_markdown_port = 8888
+"let g:instant_markdown_python = 1
+"
+
+let g:ackprg = 'ag --vimgrep'
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%'), <bang>0)
+
+" }}}
+
+
+" STATUS LINE ------------------------------------------------------------ {{{
+
+" Clear status line when vimrc is reloaded.
+set statusline=
+
+" Status line left side.
+set statusline+=\ %F\ %M\ %Y\ %R
+
+" Use a divider to separate the left side from the right side.
+set statusline+=%=
+
+" Status line right side.
+set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+
+" Show the status on the second to last line.
+set laststatus=2
+
+" }}}
